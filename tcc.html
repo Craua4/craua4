@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Text RPG</title>
+  <link rel="stylesheet" href="tcc.css">
+</head>
+<body>
+
+  <div class="game">
+    <h1>Perdido em uma dungeon!</h1>
+
+    <div class="status">
+      <p>HP: <span id="playerHP"></span></p>
+      <p>Nível: <span id="playerLevel"></span></p>
+      <p>XP: <span id="playerXP"></span></p>
+      <p>Poções: <span id="potions"></span></p>
+      <p><strong>Andar:</strong> <span id="floor"></span></p>
+    </div>
+
+    <hr>
+
+    <div class="enemy">
+      <p><strong>Inimigo:</strong> <span id="enemyName"></span></p>
+      <p>HP: <span id="enemyHP"></span></p>
+    </div>
+
+    <hr>
+
+    <div class="actions">
+      <button onclick="attack()">Atacar</button>
+      <button onclick="usePotion()">Usar Poção</button>
+      <button onclick="nextEnemy()">Procurar Inimigo</button>
+      <button onclick="nextFloor()">Próximo andar</button>
+      <button onclick="saida()">Sair</button>
+    </div>
+
+    <hr>
+
+    <div class="log" id="log"></div>
+  </div>
+
+  <script src="tcc.js"></script>
+</body>
+</html>

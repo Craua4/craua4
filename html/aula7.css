@@ -1,0 +1,24 @@
+main {
+    background-color: greenyellow;
+}
+
+.conteudoprincipal {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px;
+}
+
+.conteudo1 {
+    font-size: larger;
+    display: flex;
+    justify-content: space-around;
+    margin: 30px;
+}
+
+.size0 {
+    width: 300px;
+}
+
+.size1 {
+    width: 400px;
+}

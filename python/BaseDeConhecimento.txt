@@ -1,0 +1,15 @@
+Cliente: oi
+Chatbot: mui batatata oi
+Cliente: como ce ta
+Chatbot: to bem man
+Cliente: ta no gd
+Chatbot: to sim, to todas os horarios
+Cliente: fim
+Chatbot: Tchau
+Cliente: batao
+Chatbot: batona
+
+Cliente: barao
+Chatbot: baraozinho
+Cliente: nao
+Chatbot: sim

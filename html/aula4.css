@@ -1,0 +1,17 @@
+.linhadiagonal{
+    border: none;
+    height: 2px;
+
+
+}
+
+.textocolorido {
+    color: rgb(255, 0, 0);
+}
+
+img:hover {
+    width:50%;
+    height:50%;
+    filter: brightness(1000%);
+}
+

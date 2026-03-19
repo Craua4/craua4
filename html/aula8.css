@@ -1,0 +1,11 @@
+body {
+    background-color: brown;
+}
+
+.conteudo1 {
+    display: flex;
+    line-height: 20px;
+    justify-content: space-around;
+    margin: 30px;
+}
+

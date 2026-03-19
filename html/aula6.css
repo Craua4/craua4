@@ -1,0 +1,9 @@
+th:nth-child(1){
+    background-color: red;
+}
+th:nth-child(2){
+    background-color: blue;
+}
+th:nth-child(3){
+    background-color: green;
+}
