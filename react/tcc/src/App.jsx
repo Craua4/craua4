@@ -235,33 +235,168 @@ const topics = [
   },
 ]
  
+const quiz = [
+  {
+    question: 'Quando ocorre o crescimento populacional?',
+    options: [
+      'Quando a taxa de natalidade é maior que a de mortalidade',
+      'Quando a taxa de mortalidade é maior que a de natalidade',
+      'Apenas quando há migração para o país',
+      'Quando a população se estabiliza',
+    ],
+    correct: 0,
+    explanation:
+      'O crescimento populacional acontece quando nascem mais pessoas do que morrem em um determinado período.',
+  },
+  {
+    question:
+      'Qual das opções abaixo NÃO foi citada como uma das principais causas do crescimento populacional?',
+    options: [
+      'Avanços na medicina',
+      'Segurança alimentar',
+      'Redução do desmatamento',
+      'Urbanização',
+    ],
+    correct: 2,
+    explanation:
+      'As causas citadas foram avanços na medicina, segurança alimentar, urbanização e taxas de natalidade elevadas — não a redução do desmatamento.',
+  },
+  {
+    question:
+      'O que caracteriza o "estágio inicial de transição" da transição demográfica?',
+    options: [
+      'Natalidade e mortalidade altas',
+      'A mortalidade cai, mas a natalidade permanece alta',
+      'Natalidade e mortalidade caem juntas',
+      'Ambas se estabilizam em níveis baixos',
+    ],
+    correct: 1,
+    explanation:
+      'Nesse estágio, avanços na saúde reduzem a mortalidade, enquanto a natalidade ainda está alta, gerando crescimento acelerado.',
+  },
+  {
+    question:
+      'Qual das opções é uma consequência do crescimento populacional mencionada no conteúdo?',
+    options: [
+      'Redução do consumo de energia',
+      'Pressão sobre recursos naturais',
+      'Diminuição da urbanização',
+      'Queda automática do PIB',
+    ],
+    correct: 1,
+    explanation:
+      'Mais pessoas significam maior demanda por água, energia, alimentos e terra cultivável.',
+  },
+  {
+    question:
+      'Segundo as projeções apresentadas, o que se espera para a população mundial no século XXI?',
+    options: [
+      'Crescimento cada vez mais acelerado, sem previsão de fim',
+      'Queda abrupta e imediata',
+      'Crescimento cada vez mais lento, com tendência de estabilização',
+      'Estagnação total já nos próximos anos',
+    ],
+    correct: 2,
+    explanation:
+      'A tendência é de desaceleração do crescimento, ligada à queda das taxas de natalidade em várias regiões.',
+  },
+  {
+    question:
+      'Aproximadamente quanto tempo o planeta levou para atingir 1 bilhão de habitantes?',
+    options: [
+      'Cerca de 100 anos',
+      'Cerca de 1000 anos',
+      'Cerca de 1800 anos',
+      'Cerca de 180 anos',
+    ],
+    correct: 2,
+    explanation:
+      'O primeiro bilhão levou milênios para ser atingido; já o segundo bilhão veio em pouco mais de cem anos.',
+  },
+]
+ 
 function App() {
-  // -1 = tela de título isolada · 0..topics.length-1 = tópicos · topics.length = tela final
-  const [step, setStep] = useState(-1)
+  // 'intro' -> 'topic' -> 'quiz' -> 'result'
+  const [phase, setPhase] = useState('intro')
+  const [topicIndex, setTopicIndex] = useState(0)
+  const [quizIndex, setQuizIndex] = useState(0)
+  const [answers, setAnswers] = useState({})
  
-  const total = topics.length
-  const isIntro = step === -1
-  const isEnd = step === total
+  const totalTopics = topics.length
+  const totalQuiz = quiz.length
+  const totalSteps = totalTopics + totalQuiz
  
-  const next = () => setStep((s) => Math.min(s + 1, total))
-  const prev = () => setStep((s) => Math.max(s - 1, -1))
-  const restart = () => setStep(-1)
+  const currentStepNumber =
+    phase === 'intro'
+      ? 0
+      : phase === 'topic'
+        ? topicIndex + 1
+        : phase === 'quiz'
+          ? totalTopics + quizIndex + 1
+          : totalSteps
+ 
+  const goStart = () => setPhase('topic')
+ 
+  const nextTopic = () => {
+    if (topicIndex < totalTopics - 1) {
+      setTopicIndex((i) => i + 1)
+    } else {
+      setPhase('quiz')
+    }
+  }
+  const prevTopic = () => {
+    if (topicIndex > 0) {
+      setTopicIndex((i) => i - 1)
+    } else {
+      setPhase('intro')
+    }
+  }
+ 
+  const selectAnswer = (optionIndex) => {
+    if (answers[quizIndex] !== undefined) return
+    setAnswers((a) => ({ ...a, [quizIndex]: optionIndex }))
+  }
+  const nextQuestion = () => {
+    if (quizIndex < totalQuiz - 1) {
+      setQuizIndex((i) => i + 1)
+    } else {
+      setPhase('result')
+    }
+  }
+  const prevQuestion = () => {
+    if (quizIndex > 0) {
+      setQuizIndex((i) => i - 1)
+    } else {
+      setTopicIndex(totalTopics - 1)
+      setPhase('topic')
+    }
+  }
+ 
+  const restart = () => {
+    setPhase('intro')
+    setTopicIndex(0)
+    setQuizIndex(0)
+    setAnswers({})
+  }
+ 
+  const score = quiz.reduce(
+    (acc, q, i) => acc + (answers[i] === q.correct ? 1 : 0),
+    0,
+  )
  
   return (
     <div className="page">
-      {!isIntro && (
+      {phase !== 'intro' && (
         <div className="progress" aria-hidden="true">
           <div
             className="progress-bar"
-            style={{
-              width: `${(Math.min(step + 1, total) / total) * 100}%`,
-            }}
+            style={{ width: `${(currentStepNumber / totalSteps) * 100}%` }}
           />
         </div>
       )}
  
       <main className="stage">
-        {isIntro && (
+        {phase === 'intro' && (
           <section className="slide intro-slide" key="intro">
             <span className="eyebrow">Trabalho de Conclusão de Curso</span>
             <h1>Crescimento Populacional</h1>
@@ -269,37 +404,122 @@ function App() {
               Como a população mundial mudou ao longo do tempo, por que isso
               acontece e o que esperar para o futuro.
             </p>
-            <button className="btn" onClick={next}>
+            <button className="btn" onClick={goStart}>
               Começar →
             </button>
           </section>
         )}
  
-        {!isIntro && !isEnd && (
-          <section className="slide topic-slide" key={step}>
+        {phase === 'topic' && (
+          <section className="slide topic-slide" key={`topic-${topicIndex}`}>
             <span className="step-count">
-              Tópico {step + 1} de {total}
+              Tópico {topicIndex + 1} de {totalTopics}
             </span>
-            <h2>{topics[step].heading}</h2>
-            {topics[step].content}
+            <h2>{topics[topicIndex].heading}</h2>
+            {topics[topicIndex].content}
             <div className="slide-nav">
-              <button className="btn ghost" onClick={prev}>
+              <button className="btn ghost" onClick={prevTopic}>
                 ← Voltar
               </button>
-              <button className="btn" onClick={next}>
-                {step === total - 1 ? 'Concluir' : 'Continuar'} →
+              <button className="btn" onClick={nextTopic}>
+                {topicIndex === totalTopics - 1 ? 'Ir para o quiz' : 'Continuar'} →
               </button>
             </div>
           </section>
         )}
  
-        {isEnd && (
-          <section className="slide end-slide" key="end">
-            <span className="eyebrow">Fim do conteúdo</span>
-            <h2>Obrigado por ler!</h2>
+        {phase === 'quiz' && (
+          <section className="slide quiz-slide" key={`quiz-${quizIndex}`}>
+            <span className="step-count">
+              Pergunta {quizIndex + 1} de {totalQuiz}
+            </span>
+            <h2>{quiz[quizIndex].question}</h2>
+            <div className="quiz-options">
+              {quiz[quizIndex].options.map((option, i) => {
+                const answered = answers[quizIndex] !== undefined
+                const isSelected = answers[quizIndex] === i
+                const isCorrect = i === quiz[quizIndex].correct
+                let optionClass = 'quiz-option'
+                if (answered && isCorrect) optionClass += ' correct'
+                if (answered && isSelected && !isCorrect)
+                  optionClass += ' incorrect'
+                return (
+                  <button
+                    key={i}
+                    className={optionClass}
+                    onClick={() => selectAnswer(i)}
+                    disabled={answered}
+                  >
+                    {option}
+                  </button>
+                )
+              })}
+            </div>
+ 
+            {answers[quizIndex] !== undefined && (
+              <p
+                className={
+                  answers[quizIndex] === quiz[quizIndex].correct
+                    ? 'quiz-feedback correct'
+                    : 'quiz-feedback incorrect'
+                }
+              >
+                {answers[quizIndex] === quiz[quizIndex].correct
+                  ? 'Certa resposta! '
+                  : 'Não foi dessa vez. '}
+                {quiz[quizIndex].explanation}
+              </p>
+            )}
+ 
+            <div className="slide-nav">
+              <button className="btn ghost" onClick={prevQuestion}>
+                ← Voltar
+              </button>
+              <button
+                className="btn"
+                onClick={nextQuestion}
+                disabled={answers[quizIndex] === undefined}
+              >
+                {quizIndex === totalQuiz - 1 ? 'Ver resultado' : 'Próxima pergunta'} →
+              </button>
+            </div>
+          </section>
+        )}
+ 
+        {phase === 'result' && (
+          <section className="slide end-slide result-slide" key="result">
+            <span className="eyebrow">Quiz finalizado</span>
+            <h2>Você acertou {score} de {totalQuiz}</h2>
             <p className="subtitle">
-              Você percorreu todos os tópicos sobre crescimento populacional.
+              {score === totalQuiz
+                ? 'Mandou muito bem! Você absorveu todo o conteúdo.'
+                : score >= totalQuiz / 2
+                  ? 'Bom resultado! Revise os pontos abaixo para fixar o conteúdo.'
+                  : 'Vale a pena revisar os tópicos e tentar de novo.'}
             </p>
+ 
+            <ul className="result-list">
+              {quiz.map((q, i) => {
+                const isRight = answers[i] === q.correct
+                return (
+                  <li
+                    key={i}
+                    className={
+                      isRight ? 'result-item correct' : 'result-item incorrect'
+                    }
+                  >
+                    <span className="result-icon">{isRight ? '✓' : '✕'}</span>
+                    <div>
+                      <p className="result-question">{q.question}</p>
+                      <p className="result-answer">
+                        Resposta correta: {q.options[q.correct]}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+ 
             <div className="slide-nav center">
               <button className="btn ghost" onClick={restart}>
                 Recomeçar
