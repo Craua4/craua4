@@ -39,7 +39,7 @@ const styles = {
     height: "fit-content",
   },
   buttons: {
-    backgroundColor: "white",
+    backgroundColor: "red",
     flexGrow: 1,
     height: "480px",
     display: "grid",
@@ -53,7 +53,7 @@ const styles = {
     cursor: "pointer",
     fontSize: "1.5rem",
     fontWeight: "700",
-    backgroundColor: "white",
+    backgroundColor: "blue",
     transition: "opacity 0.3s ease, color 0.3s ease",
   },
   btnClear: {
