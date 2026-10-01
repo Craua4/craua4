@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bxr"]
 size = Vector2(128, 129)
 
-[node name="Platform" type="Node2D"]
+[node name="Platform" type="Node2D" groups=["ground"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
