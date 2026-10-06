@@ -9,24 +9,24 @@ size = Vector2(34.5, 97.5)
 [node name="Character" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-246.0, -224.0]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_pjt0s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-4.5, 1.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pjt0s")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_pjt0s")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 11)
 
-[node name="hud" type="CanvasLayer" parent="CharacterBody2D"]
+[node name="hud" type="CanvasLayer" parent="Player"]
 layer = 3
 
-[node name="texto" type="Label" parent="CharacterBody2D/hud"]
+[node name="texto" type="Label" parent="Player/hud"]
 offset_left = -57.0
 offset_top = -165.0
 offset_right = 21.0
