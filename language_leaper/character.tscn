@@ -7,6 +7,7 @@
 size = Vector2(34.5, 97.5)
 
 [node name="Character" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-246.0, -224.0]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_pjt0s")
@@ -20,3 +21,14 @@ shape = SubResource("RectangleShape2D_pjt0s")
 texture = ExtResource("2_pjt0s")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, 11)
+
+[node name="hud" type="CanvasLayer" parent="CharacterBody2D"]
+layer = 3
+
+[node name="texto" type="Label" parent="CharacterBody2D/hud"]
+offset_left = -57.0
+offset_top = -165.0
+offset_right = 21.0
+offset_bottom = -129.0
+text = "Health: 3"

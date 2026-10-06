@@ -7,6 +7,18 @@ const speed = 200
 const jump_force = -400
 const gravity = 1000
 
+var health := 3   # ":" é usado para definir como int automaticamente
+
+func _ready():
+	$hud/texto.text = "Health: " + str(health)
+
+func take_damage():
+	health -= 1
+	$hud/texto.text = "Health: " + str(health)
+	if health <= 0:
+		get_tree().reload_current_scene()  # restart the level
+
+# A cada atualização da física, calcula o que o personagem deve fazer
 func _physics_process(delta: float):
 	
 	var dir = Input.get_axis("move_left", "move_right")
