@@ -41,10 +41,12 @@ const speed = 100
 
 @onready var sprite = $Sprite2D
 # The real moving body is the CharacterBody2D inside the Character scene
-@onready var player = get_node("../../Character/CharacterBody2D")
+@onready var player = get_node("../../Character/Player")
 
 var facing = -1
 var health = 1
+
+
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -74,3 +76,10 @@ func take_damage():
 	health -= 1
 	if health <= 0:
 		queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print('atacando')
+	if body.is_in_group("player"):
+		body.take_damage()
+		print('morreu')
