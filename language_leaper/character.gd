@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-@onready var sprite = $Sprite2D
-@onready var health_label: Label = $hud/health
+@onready var animated_sprite = $AnimatedSprite2D
 
 const speed = 200
 const jump_force = -400
 const gravity = 1000
+
+func _ready():
+	animated_sprite.play("idle")
 
 func take_damage():
 	print('morreu mesmo')
@@ -21,5 +23,4 @@ func _physics_process(delta: float):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_force
-		
-		
+	
