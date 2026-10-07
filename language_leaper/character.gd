@@ -1,17 +1,19 @@
 extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
-
+	
 const speed = 200
 const jump_force = -400
 const gravity = 1000
 
 func _ready():
+	add_to_group("player")
 	sprite.play("idle")
 
 func take_damage():
 	print('morreu mesmo')
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
+
 
 func _physics_process(delta: float):
 	var dir = Input.get_axis("move_left", "move_right")
