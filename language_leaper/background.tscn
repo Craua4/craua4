@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8dmg48hk7tll"]
+
+[ext_resource type="Texture2D" uid="uid://dl2hjfb3035ql" path="res://feudal-japan-1920-x-1080-wallpaper-dn5ywwo9c4wccmgd.jpg" id="1_oabld"]
+
+[node name="Background" type="Node2D" unique_id=858499353]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=282306516]
+texture = ExtResource("1_oabld")

@@ -22,6 +22,14 @@ animations = [{
 "texture": ExtResource("3_wfnr8")
 }],
 "loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wfnr8")
+}],
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -44,4 +52,4 @@ position = Vector2(-1, 11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=438566941]
 sprite_frames = SubResource("SpriteFrames_3w5fx")
-animation = &"idle"
+animation = &"walk"
