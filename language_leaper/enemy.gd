@@ -73,10 +73,10 @@ func set_facing(new_direction):
 	sprite.flip_h = facing == 1
 
 func take_damage():
-	health -= 1
-	if health <= 0:
-		queue_free()
+	queue_free()
 
+func _ready():
+	add_to_group("enemy")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print('atacando')

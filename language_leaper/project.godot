@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 ground=""
 player=""
+enemy=""
 
 [input]
 
