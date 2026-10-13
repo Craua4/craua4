@@ -2,7 +2,6 @@ const express = require("express");
 
 const app = express();
 
-
 app.use(express.json())
 app.get("/", (req, res) => {
     res.send("Olá, mundo!");
@@ -73,7 +72,25 @@ app.get("/movies/:id", (req, res) => {
     const movie = movies.find(movie => movie.id === id);
 
     res.json(movie)
-})
+});
+
+app.put("/movies/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  const movie = movies.find(movie => movie.id === id);
+
+  if (!movie) {
+    return res.status(404).json({
+      message: "Filme não encontrado"
+    });
+  }
+
+  movie.title = req.body.title;
+  movie.genre = req.body.genre;
+  movie.year = req.body.year;
+
+  res.json(movie);
+});
 
 app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000");

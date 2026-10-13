@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dtlunb6462vvu"]
+[gd_scene load_steps=6 format=3 uid="uid://dtlunb6462vvu"]
 
 [ext_resource type="Script" uid="uid://b5n2oqeikwsic" path="res://character.gd" id="1_pjt0s"]
 [ext_resource type="Texture2D" uid="uid://colw5bmk4s43m" path="res://characteranimation_0001.png" id="2_wa5vi"]
@@ -13,7 +13,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_wa5vi")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -21,7 +21,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_wfnr8")
 }],
-"loop": 1,
+"loop": true,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -29,27 +29,27 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_wfnr8")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[node name="Character" type="Node2D" unique_id=156121581]
+[node name="Character" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-246.0, -224.0]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=2080940852 groups=["player"]]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_pjt0s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1394967762]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-4.5, 1.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pjt0s")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=990837858]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=578490254]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 11)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=438566941]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_3w5fx")
 animation = &"walk"
