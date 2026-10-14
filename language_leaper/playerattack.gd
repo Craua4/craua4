@@ -1,14 +1,16 @@
 
 extends Area2D
 
+@onready var sprite = $Sprite2D
+
 func _ready():
 	monitoring = false
 	visible = false
 
 
-func atacar():
+func atacar(direcao:int):
 	print("Ataque ativado!")
-
+	sprite.flip_h = direcao <0
 	monitoring = true
 	visible = true
 

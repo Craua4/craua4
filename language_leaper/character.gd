@@ -1,7 +1,10 @@
 extends CharacterBody2D
 @onready var player_attack = get_tree().root.find_child("ataque", true, false).find_child("PlayerAttack", true, false)
 @onready var sprite = $AnimatedSprite2D
+@onready var jumpscare = $CanvasLayer/Jumpscare
+@onready var jumpscare_sound = $CanvasLayer/Som
 
+var dead = false
 const speed = 200
 const jump_force = -500
 const gravity = 1000
@@ -9,11 +12,24 @@ const gravity = 1000
 func _ready():
 	add_to_group("player")
 	sprite.play("idle")
+	jumpscare.visible = false
+
 
 func take_damage():
-	print('morreu mesmo')
-	get_tree().call_deferred("reload_current_scene")
+	if dead:
+		return
 
+	dead = true
+	print("morreu mesmo")
+
+	jumpscare.visible = true
+
+	if jumpscare_sound.stream != null:
+		jumpscare_sound.play()
+
+	await get_tree().create_timer(3).timeout
+
+	get_tree().reload_current_scene()
 
 func _physics_process(delta: float):
 	var dir = Input.get_axis("move_left", "move_right")
@@ -30,14 +46,14 @@ func _physics_process(delta: float):
 		velocity.y = jump_force
 	
 	if Input.is_action_just_pressed("attack"):
-		var offset = 30
+		var offset = 80
 
 		player_attack.global_position = global_position + Vector2(
 			offset if not sprite.flip_h else -offset,
 			0
 		)
 
-		player_attack.atacar()
+		player_attack.atacar(-1 if sprite.flip_h else 1)
 	update_animation(dir)
 
 func update_animation(dir):

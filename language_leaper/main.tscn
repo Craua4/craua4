@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtlunb6462vvu" path="res://character.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dchhgqq6s2ecq" path="res://enemy.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cg62y6ll5d7ql" path="res://player_attack.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://davma3aowcv06" path="res://portal.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1975401947]
 
@@ -33,10 +34,10 @@ rotation = -1.5708
 scale = Vector2(0.1, 1)
 
 [node name="Character" parent="." unique_id=983765133 instance=ExtResource("2_h2yge")]
-position = Vector2(-1211, 6)
+position = Vector2(-911, -5)
 
 [node name="Enemy" parent="." unique_id=2120837661 instance=ExtResource("3_h2yge")]
-position = Vector2(2310, 3)
+position = Vector2(2199, 20)
 
 [node name="ataque" parent="." unique_id=1815645418 groups=["enemy"] instance=ExtResource("5_lquwl")]
 position = Vector2(-37, -1887)
@@ -91,3 +92,6 @@ offset_bottom = -186.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "GREEN            JUMP"
+
+[node name="Node2D" parent="." unique_id=430901090 instance=ExtResource("6_7mycd")]
+position = Vector2(2396, 22)
