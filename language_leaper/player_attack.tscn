@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cg62y6ll5d7ql"]
+[gd_scene load_steps=4 format=3 uid="uid://cg62y6ll5d7ql"]
 
 [ext_resource type="Texture2D" uid="uid://c0vxbek6kvsd4" path="res://slash.png" id="1_m5rqh"]
 [ext_resource type="Script" uid="uid://cmwob3yk4lfop" path="res://playerattack.gd" id="1_r8f3e"]
@@ -6,16 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1mjt"]
 size = Vector2(124, 195)
 
-[node name="ataque" type="Node2D" unique_id=1815645418]
+[node name="ataque" type="Node2D"]
 
-[node name="PlayerAttack" type="Area2D" parent="." unique_id=488279492]
+[node name="PlayerAttack" type="Area2D" parent="."]
 script = ExtResource("1_r8f3e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttack" unique_id=605953533]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttack"]
 position = Vector2(4, 8.5)
 shape = SubResource("RectangleShape2D_m1mjt")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerAttack" unique_id=2052093774]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAttack"]
 texture = ExtResource("1_m5rqh")
 
 [connection signal="body_entered" from="PlayerAttack" to="PlayerAttack" method="_on_body_entered"]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 @onready var player_attack = get_tree().root.find_child("ataque", true, false).find_child("PlayerAttack", true, false)
+@onready var shuriken = get_tree().root.find_child("shuriken", true, false).find_child("PlayerShuriken", true, false)
+
 @onready var sprite = $AnimatedSprite2D
 @onready var jumpscare = $CanvasLayer/Jumpscare
 @onready var jumpscare_sound = $CanvasLayer/Som
@@ -52,8 +54,18 @@ func _physics_process(delta: float):
 			offset if not sprite.flip_h else -offset,
 			0
 		)
-
 		player_attack.atacar(-1 if sprite.flip_h else 1)
+
+	
+	if Input.is_action_just_pressed("shuriken"):
+		var offset = 80
+
+		shuriken.global_position = global_position + Vector2(
+			offset if not sprite.flip_h else -offset,
+			0
+		)
+		shuriken.shuriken(-1 if sprite.flip_h else 1)
+	
 	update_animation(dir)
 
 func update_animation(dir):

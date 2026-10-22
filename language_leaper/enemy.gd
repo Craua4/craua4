@@ -79,7 +79,7 @@ func _ready():
 	add_to_group("enemy")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('atacando')
+	print('inimigando')
 	if body.is_in_group("player"):
 		body.take_damage()
 		print('morreu')
