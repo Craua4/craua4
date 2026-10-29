@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2em6sxo3wh1r"]
+[gd_scene format=3 uid="uid://d2em6sxo3wh1r"]
 
 [ext_resource type="PackedScene" uid="uid://i5m1hhnfsq17" path="res://platform.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c8dmg48hk7tll" path="res://background.tscn" id="1_1bvp3"]
@@ -8,66 +8,74 @@
 [ext_resource type="PackedScene" uid="uid://davma3aowcv06" path="res://portal.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://botijhjd123cl" path="res://player_shuriken.tscn" id="7_272bh"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=575275781]
 
-[node name="Background" parent="." instance=ExtResource("1_1bvp3")]
+[node name="Background" parent="." unique_id=1442053415 instance=ExtResource("1_1bvp3")]
 position = Vector2(571, -624)
 scale = Vector2(2, 2)
 metadata/_edit_lock_ = true
 
-[node name="Platform" parent="." instance=ExtResource("1_0xm2m")]
+[node name="Platform" parent="." unique_id=1885681704 instance=ExtResource("1_0xm2m")]
 position = Vector2(1144, -76)
 scale = Vector2(5, 3)
 
-[node name="Platform2" parent="." instance=ExtResource("1_0xm2m")]
+[node name="Platform2" parent="." unique_id=309493274 instance=ExtResource("1_0xm2m")]
 position = Vector2(-978, -826)
 rotation = 1.5708
 scale = Vector2(3, 5)
 
-[node name="Platform3" parent="." instance=ExtResource("1_0xm2m")]
+[node name="Platform3" parent="." unique_id=226439252 instance=ExtResource("1_0xm2m")]
 position = Vector2(2115, -820)
 rotation = -1.5708
 scale = Vector2(3, 5)
 
-[node name="Platform4" parent="." instance=ExtResource("1_0xm2m")]
+[node name="Platform4" parent="." unique_id=1889576659 instance=ExtResource("1_0xm2m")]
 position = Vector2(76, 106)
 rotation = -1.5708
 scale = Vector2(0.1, 1)
 
-[node name="Character" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(-911, -5)
+[node name="Enemy" parent="." unique_id=1663493549 instance=ExtResource("3_h2yge")]
+position = Vector2(1789, 15)
 
-[node name="Enemy" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(1832, 20)
-
-[node name="ataque" parent="." groups=["enemy"] instance=ExtResource("5_lquwl")]
+[node name="ataque" parent="." unique_id=973526392 groups=["enemy"] instance=ExtResource("5_lquwl")]
 position = Vector2(-37, -1887)
 
-[node name="pressto1" type="Label" parent="."]
-offset_left = -1341.0
-offset_top = -42.0
-offset_right = -810.0
-offset_bottom = 27.0
+[node name="pressto1" type="Label" parent="." unique_id=1334145255]
+offset_left = -1336.0
+offset_top = -203.0
+offset_right = -805.0
+offset_bottom = -134.0
 theme_override_font_sizes/font_size = 50
 text = "Press A/D to move"
 
-[node name="pressto2" type="Label" parent="."]
-offset_left = -1341.0
-offset_top = 14.0
-offset_right = -810.0
-offset_bottom = 83.0
+[node name="pressto2" type="Label" parent="." unique_id=702821460]
+offset_left = -1336.0
+offset_top = -147.0
+offset_right = -805.0
+offset_bottom = -78.0
 theme_override_font_sizes/font_size = 50
 text = "Press W to to jump"
 
-[node name="pressto3" type="Label" parent="."]
-offset_left = -1340.0
-offset_top = 71.0
-offset_right = -809.0
-offset_bottom = 140.0
+[node name="pressto3" type="Label" parent="." unique_id=2059449869]
+offset_left = -1335.0
+offset_top = -90.0
+offset_right = -804.0
+offset_bottom = -21.0
 theme_override_font_sizes/font_size = 50
-text = "Press Space to attack"
+text = "Press LMB to attack"
 
-[node name="Label" type="Label" parent="."]
+[node name="pressto4" type="Label" parent="." unique_id=1300746363]
+offset_left = -1335.0
+offset_top = -34.0
+offset_right = -804.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 50
+text = "Press RMB to SHURIKEN"
+
+[node name="Character" parent="." unique_id=1966469744 instance=ExtResource("2_h2yge")]
+position = Vector2(-1219, 35)
+
+[node name="Label" type="Label" parent="." unique_id=1935916430]
 offset_left = -1018.0
 offset_top = -199.0
 offset_right = -527.0
@@ -75,7 +83,7 @@ offset_bottom = -130.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=1839944545]
 offset_left = -1029.0
 offset_top = -250.0
 offset_right = -505.0
@@ -83,7 +91,7 @@ offset_bottom = -181.0
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_font_sizes/font_size = 50
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=1643108822]
 offset_left = -1029.0
 offset_top = -305.0
 offset_right = -581.0
@@ -91,8 +99,11 @@ offset_bottom = -236.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
 
-[node name="Node2D" parent="." instance=ExtResource("6_7mycd")]
+[node name="Node2D" parent="." unique_id=166915682 instance=ExtResource("6_7mycd")]
 position = Vector2(2253, -94)
 
-[node name="shuriken" parent="." instance=ExtResource("7_272bh")]
+[node name="shuriken" parent="." unique_id=992771939 instance=ExtResource("7_272bh")]
 position = Vector2(8, -604)
+
+[node name="Enemy2" parent="." unique_id=28928810 instance=ExtResource("3_h2yge")]
+position = Vector2(944, 35)
