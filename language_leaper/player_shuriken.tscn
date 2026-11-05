@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://botijhjd123cl"]
+[gd_scene load_steps=4 format=3 uid="uid://botijhjd123cl"]
 
 [ext_resource type="Script" uid="uid://rrmp1c4osb85" path="res://player_shuriken.gd" id="1_ol87u"]
-[ext_resource type="Texture2D" uid="uid://c0vxbek6kvsd4" path="res://slash.png" id="2_clq6v"]
+[ext_resource type="Texture2D" uid="uid://dhc6bmw6dlgu" path="res://shurikenplayer.png" id="2_ol87u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1mjt"]
-size = Vector2(124, 195)
+size = Vector2(55, 55)
 
-[node name="shuriken" type="Node2D" unique_id=714978665]
+[node name="shuriken" type="Node2D"]
 
-[node name="PlayerShuriken" type="Area2D" parent="." unique_id=441190386]
+[node name="PlayerShuriken" type="Area2D" parent="."]
 script = ExtResource("1_ol87u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShuriken" unique_id=862195663]
-position = Vector2(4, 8.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerShuriken"]
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_m1mjt")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerShuriken" unique_id=850066507]
-texture = ExtResource("2_clq6v")
+[node name="Sprite2D" type="Sprite2D" parent="PlayerShuriken"]
+texture = ExtResource("2_ol87u")
 
 [connection signal="body_entered" from="PlayerShuriken" to="PlayerShuriken" method="_on_body_entered"]

@@ -1,23 +1,31 @@
 const express = require("express");
 const router = express.Router();
 
-const movies = require("../data/movies");
+const db = require("../database/db");
 
 // READ: listar todos os filmes
 router.get("/", (req, res) => {
+    const movies = db.prepare(
+        "SELECT * FROM movies"
+    ).all();
     res.json(movies);
 });
 
 // READ: buscar um filme pelo ID
 router.get("/:id", (req, res) => {
     const id = Number(req.params.id);
-
-    const movie = movies.find(movie => movie.id === id);
-
+    if (!Number.isInteger(id) || id <= 0) {
+        return res.status(400).json({
+            message: "ID inválido"
+        })
+    }
+    const movie = db.prepare(
+        "SELECT * FROM movies WHERE id = ?"
+    ).get(id);
     if (!movie) {
         return res.status(404).json({
             message: "Filme não encontrado"
-        });
+        })
     }
 
     res.json(movie);
@@ -25,11 +33,19 @@ router.get("/:id", (req, res) => {
 
 // CREATE: adicionar um filme
 router.post("/", (req, res) => {
-    const movie = req.body;
+    const { title, genre, year } = req.body;
 
-    movies.push(movie);
+    if (
+        typeof title !== "string" || !title.trim() ||
+        typeof genre !== "string" || !genre.trim() ||
+        !Number.isInteger(year) || year < 1888 || year > 2100
+    ) {
+        return res.status(400).json({
+            message: "Informe título, gênero e ano válidos"
+        });
+    }
 
-    res.status(201).json(movie);
+    
 });
 
 // UPDATE: atualizar um filme

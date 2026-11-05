@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8rkuoj22uxfp"]
+
+[ext_resource type="PackedScene" uid="uid://i5m1hhnfsq17" path="res://platform.tscn" id="1_jg0dc"]
+[ext_resource type="PackedScene" uid="uid://dtlunb6462vvu" path="res://character.tscn" id="2_nmjpi"]
+[ext_resource type="PackedScene" uid="uid://cg62y6ll5d7ql" path="res://player_attack.tscn" id="3_1y8me"]
+[ext_resource type="PackedScene" uid="uid://botijhjd123cl" path="res://player_shuriken.tscn" id="4_n7ypv"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_jg0dc")]
+position = Vector2(135, -41)
+
+[node name="Character" parent="." instance=ExtResource("2_nmjpi")]
+position = Vector2(3, -73)
+
+[node name="Platform2" parent="." instance=ExtResource("1_jg0dc")]
+position = Vector2(1128, -41)
+
+[node name="ataque" parent="." instance=ExtResource("3_1y8me")]
+position = Vector2(-135, -1089)
+
+[node name="shuriken" parent="." instance=ExtResource("4_n7ypv")]
+position = Vector2(177, -1089)
