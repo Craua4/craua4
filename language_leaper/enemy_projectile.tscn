@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfpaqtc5ybh3y"]
+
+[ext_resource type="Texture2D" uid="uid://om2o0y5rpl02" path="res://shurikenenemy.png.png" id="1_ff34o"]
+[ext_resource type="Script" uid="uid://bu7lschx0n0w8" path="res://enemy_shuriken.gd" id="1_vpq67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpq67"]
+size = Vector2(55, 55)
+
+[node name="enemy_projectile" type="Node2D"]
+
+[node name="EnemyShuriken" type="Area2D" parent="."]
+script = ExtResource("1_vpq67")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyShuriken"]
+texture = ExtResource("1_ff34o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyShuriken"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_vpq67")

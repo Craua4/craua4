@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8rkuoj22uxfp"]
+[gd_scene load_steps=6 format=3 uid="uid://b8rkuoj22uxfp"]
 
 [ext_resource type="PackedScene" uid="uid://i5m1hhnfsq17" path="res://platform.tscn" id="1_jg0dc"]
+[ext_resource type="PackedScene" uid="uid://ela0p81kcxf2" path="res://background_2.tscn" id="1_n7ypv"]
 [ext_resource type="PackedScene" uid="uid://dtlunb6462vvu" path="res://character.tscn" id="2_nmjpi"]
 [ext_resource type="PackedScene" uid="uid://cg62y6ll5d7ql" path="res://player_attack.tscn" id="3_1y8me"]
 [ext_resource type="PackedScene" uid="uid://botijhjd123cl" path="res://player_shuriken.tscn" id="4_n7ypv"]
 
 [node name="Level2" type="Node2D"]
+
+[node name="Background2" parent="." instance=ExtResource("1_n7ypv")]
+position = Vector2(742, -525)
 
 [node name="Platform" parent="." instance=ExtResource("1_jg0dc")]
 position = Vector2(135, -41)
