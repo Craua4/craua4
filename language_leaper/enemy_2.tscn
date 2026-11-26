@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://djbibexqih8qy"]
 
-[ext_resource type="Texture2D" uid="uid://b3svyy2smf5dg" path="res://enemy2.png.png" id="1_867ty"]
 [ext_resource type="Script" uid="uid://m3brvfj04et5" path="res://enemybody.gd" id="1_vfv5t"]
+[ext_resource type="Texture2D" uid="uid://ckvlgjqdfm725" path="res://enemy2.png" id="2_vfv5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvvu1"]
 size = Vector2(162, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfv5t"]
-size = Vector2(128, 128)
+size = Vector2(98, 145)
 
 [node name="Enemy2" type="Node2D"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_vfv5t")
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_867ty")
+texture = ExtResource("2_vfv5t")
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 
@@ -26,6 +26,7 @@ position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_mvvu1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-4, 9.5)
 shape = SubResource("RectangleShape2D_vfv5t")
 
 [node name="Timer" type="Timer" parent="CharacterBody2D"]

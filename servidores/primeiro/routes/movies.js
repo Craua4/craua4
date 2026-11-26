@@ -4,6 +4,12 @@ const router = express.Router();
 const db = require("../database/db");
 const { validateId, validateMovie } = require("../middlewares/middleware.js")
 
+router.get("/", (req,res) => {
+    const movies = db.prepare("SELECT * FROM movies").all();
+
+    res.json(movies);
+})
+
 // READ: listar todos os filmes
 router.get("/", (req, res) => {
     const movies = db.prepare(
@@ -34,6 +40,7 @@ router.get("/:id", (req, res) => {
 
 // CREATE: adicionar um filme
 router.post("/", (req, res) => {
+
     const { title, genre, year } = req.body;
 
     if (
